@@ -37,8 +37,8 @@ except ImportError:
 
 # Overall model variables: problem size
 # binary variable q_nd is the assignment of nurse n to day d
-n_nurses = 3      # count nurses n = 1 ... n_nurses
-n_days = 11       # count scheduling days as d = 1 ... n_days
+n_nurses = 4      # count nurses n = 1 ... n_nurses
+n_days = 14       # count scheduling days as d = 1 ... n_days
 size = n_days * n_nurses
 
 # Parameters for hard nurse constraint
@@ -238,16 +238,20 @@ for a_y, a_x in sched:
         ax.add_patch(Rectangle(
             xy=(a_x-width/2, a_y-height/2) ,width=width, height=height,
             linewidth=1, color='red', fill=True))
-    else:
+    elif a_y == 2:
         ax.add_patch(Rectangle(
             xy=(a_x-width/2, a_y-height/2) ,width=width, height=height,
             linewidth=1, color='green', fill=True))
+    else:
+        ax.add_patch(Rectangle(
+            xy=(a_x-width/2, a_y-height/2) ,width=width, height=height,
+            linewidth=1, color='orange', fill=True))
 ax.axis('equal')
 ax.set_xticks(range(n_days))
 ax.set_yticks(range(n_nurses))
 ax.set_xlabel("Shifts")
 ax.set_ylabel("Nurses")
-plt.savefig("schedule.png")
+plt.savefig("schedule2.png")
 
 # Print schedule to command-line
 print("\nSchedule:\n")
